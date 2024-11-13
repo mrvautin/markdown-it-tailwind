@@ -10,5 +10,5 @@ export default [
       name: "markdownItTailwind",
     },
     plugins: [commonjs()],
-  }
+  },
 ];

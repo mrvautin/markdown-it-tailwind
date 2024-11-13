@@ -11,19 +11,21 @@ This plugin adds default tailwind classes to HTML elements to make your markdown
 ## Usage
 
 ```js
-const md = require('markdown-it');
+const md = require("markdown-it");
 const tailwind = require("markdown-it-tailwind");
-md().use(tailwind, { styles: {}, classAttribute: "className" }).render("# H1\n\n## H2");
+md()
+  .use(tailwind, { styles: {}, classAttribute: "className" })
+  .render("# H1\n\n## H2");
 ```
 
 ## Options
 
 The `opts` object can contain:
 
-| Name                   | Description                                                               |
-| ---------------------- | ------------------------------------------------------------------------- | 
-| `styles`               | Object. Comes with a set of defaults which are overwritten.               |
-| `classAttribute`       | Defaults to `class`. Can also be `className` in React component.          |
+| Name             | Description                                                      |
+| ---------------- | ---------------------------------------------------------------- |
+| `styles`         | Object. Comes with a set of defaults which are overwritten.      |
+| `classAttribute` | Defaults to `class`. Can also be `className` in React component. |
 
 ## Styles
 
