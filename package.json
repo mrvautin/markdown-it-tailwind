@@ -1,0 +1,46 @@
+{
+  "name": "markdown-it-tailwind",
+  "version": "0.0.1",
+  "description": "Tailwind styling for markdown-it.",
+  "keywords": [
+    "markdown",
+    "markdown-it",
+    "markdown-it-plugin",
+    "tailwind"
+  ],
+  "license": "ISC",
+  "author": {
+    "name": "Mark Moffat",
+    "email": "hi@markmoffat.com",
+    "url": "https://markmoffat.com"
+  },
+  "files": [
+    "README.md",
+    "dist/*",
+    "runkit.js",
+    "types/*"
+  ],
+  "main": "dist/markdownItTailwind.js",
+  "module": "dist/markdownItTailwind.js",
+  "repository": "mrvautin/markdown-it-tailwind",
+  "scripts": {
+    "build": "npx rollup -c",
+    "dev": "npx rollup -c --watch",
+    "lint": "npx prettier . --write",
+    "prepare": "npm run build && npm test",
+    "test": "ava ./tests/test.js"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.1",
+    "ava": "^6.2.0",
+    "markdown-it": "*",
+    "prettier": "3.3.3",
+    "rollup": "^2.79.2"
+  },
+  "peerDependencies": {
+    "@types/markdown-it": "*",
+    "markdown-it": "*"
+  },
+  "source": "index.js",
+  "unpkg": "dist/markdownItTailwind.umd.js"
+}
