@@ -28,19 +28,27 @@
     "dev": "npx rollup -c --watch",
     "lint": "npx prettier . --write",
     "prepare": "npm run build && npm test",
-    "test": "ava ./tests/test.js"
+    "test": "npx -- jest --verbose ./tests/ --runInBand"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^28.0.1",
+    "@ava/typescript": "^4.0.0",
+    "@babel/core": "^7.26.0",
+    "@rollup/plugin-typescript": "^12.1.1",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.9.0",
     "ava": "^6.2.0",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
     "markdown-it": "*",
     "prettier": "3.3.3",
-    "rollup": "^2.79.2"
+    "rollup": "^2.79.2",
+    "rollup-plugin-flat-dts": "^2.8.0"
   },
   "peerDependencies": {
     "@types/markdown-it": "*",
     "markdown-it": "*"
   },
-  "source": "index.js",
+  "source": "./src/index.ts",
+  "typings": "./dist/index.d.ts",
   "unpkg": "dist/markdownItTailwind.umd.js"
 }

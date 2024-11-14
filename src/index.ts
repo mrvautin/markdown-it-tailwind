@@ -1,4 +1,6 @@
-const moduleDefaults = {
+import MarkdownIt, { StateCore, Token } from "markdown-it";
+
+const moduleDefaults: Options = {
   classAttribute: "class",
   styles: {
     h1: "text-5xl",
@@ -12,16 +14,16 @@ const moduleDefaults = {
 
 let defaults;
 
-const markdownItTailwind = (md, opts) => {
+const markdownItTailwind = (md: MarkdownIt, opts: Options) => {
   defaults = Object.assign({}, moduleDefaults, opts);
   md.core.ruler.push("markdownItTailwind", processElement);
 };
 
-const getStyle = (token) => {
+const getStyle = (token: Token) => {
   return defaults.styles[token.tag] || "";
 };
 
-const addStyle = (token) => {
+const addStyle = (token: Token) => {
   // If there are inline tokens with children, loop them
   if (token.children && token.children.length > 0) {
     for (const child of token.children) {
@@ -40,7 +42,7 @@ const addStyle = (token) => {
 };
 
 // Set the class attribute
-const setStyle = (style, token) => {
+const setStyle = (style: string, token: Token) => {
   if (token.attrGet(defaults.classAttribute)) {
     style = ";" + style;
     token.attrJoin(defaults.classAttribute, style);
@@ -50,7 +52,7 @@ const setStyle = (style, token) => {
 };
 
 // Process the element/token
-function processElement(state) {
+function processElement(state: StateCore) {
   state.tokens.forEach((token) => {
     if (
       /_open$/.test(token.type) ||
@@ -62,4 +64,9 @@ function processElement(state) {
   });
 }
 
-module.exports = markdownItTailwind;
+export interface Options { 
+  styles: any,
+  classAttribute: string;
+}
+
+export default markdownItTailwind;
